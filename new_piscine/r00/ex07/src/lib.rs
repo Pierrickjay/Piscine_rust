@@ -66,7 +66,7 @@ fn check_cond_len(query: &[u8], pattern: &[u8]) -> bool
 	return false ;
 }
 
-fn strpcmp(query: &[u8], pattern: &[u8]) -> bool
+pub fn strpcmp(query: &[u8], pattern: &[u8]) -> bool
 {
 	let mut i = 0;
 	let mut j = 0;
@@ -76,7 +76,6 @@ fn strpcmp(query: &[u8], pattern: &[u8]) -> bool
 	{
 		if check_cond_len(query, pattern) == true
 		{
-			println!("out here 1");
 			return true
 		}
 		if !query.is_empty() && pattern.is_empty() || query.is_empty() && !pattern.is_empty() && check_asterix(pattern, 0) == false
@@ -92,17 +91,12 @@ fn strpcmp(query: &[u8], pattern: &[u8]) -> bool
 			while j < pattern.len() && pattern[j] == 42 {
 				j += 1;
 			}
-			//println!("{j} && pattern.len = {}", pattern.len());
 			if pattern.len() > j
 			{
 				while i < query.len() && query[i] != pattern[j] {
 					i += 1;
-					//compteur += 1;
 				}
-				//println!{"query[i] = {} pattern[j] ={}", query[i], pattern[j]}
-				//compteur -= 1;
 				if i == query.len() {
-					println!("out here 1");
 					return false;
 				}
 			}
@@ -112,7 +106,6 @@ fn strpcmp(query: &[u8], pattern: &[u8]) -> bool
 		}
 		else if query[i] != pattern[j]
 		{
-			println!("out here 2 ");
 			return false;
 		}
 		else
@@ -122,10 +115,8 @@ fn strpcmp(query: &[u8], pattern: &[u8]) -> bool
 		}
 	}
 	if i == query.len() && j  < pattern.len() || j == pattern.len() && i < query.len(){
-		println!("out here4 ");
 		return false
 	}
-	println!("out here final");
 	return true
 }
 #[test]

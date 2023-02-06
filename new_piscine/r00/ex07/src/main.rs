@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 use ftkit::ARGS;
+use ex07::strpcmp;
 
 fn main() {
-	println!("Hello, world!");
+	println!("{}", strpcmp(&ARGS[1].as_bytes(), &ARGS[2].as_bytes()));
 }
