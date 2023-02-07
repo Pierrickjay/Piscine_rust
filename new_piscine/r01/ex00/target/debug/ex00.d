@@ -1,1 +1,0 @@
-/mnt/nfs/homes/pjay/Cursus42/Piscine_rust/new_piscine/r01/ex00/target/debug/ex00: /mnt/nfs/homes/pjay/Cursus42/Piscine_rust/new_piscine/r01/ex00/src/lib.rs /mnt/nfs/homes/pjay/Cursus42/Piscine_rust/new_piscine/r01/ex00/src/main.rs
