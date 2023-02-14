@@ -6,7 +6,7 @@
 /*   By: pjay <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:58:40 by pjay              #+#    #+#             */
-/*   Updated: 2023/02/14 18:13:53 by pjay             ###   ########.fr       */
+/*   Updated: 2023/02/14 18:19:16 by pjay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,6 @@ fn	find_highest_number(boxes: &mut [[u32; 2]]) -> usize
 	}
 	pos
 }
-
-// fn	check_sorted_box(boxes: &mut [[u32; 2]])
-// {
-// 	fn mut test = 0;
-// 	let mut i = 0;
-// 	let mut j;
-// 	while i < boxes.len()
-// 	{
-// 		j = 0;
-// 		while j < boxes[i].len()
-// 		{
-// 			if i != 0 && boxes[i][j] > boxes[i - 1][j]
-// 			{
-// 				j = 0;
-// 			}
-// 			j += 1;
-// 		}
-// 		i += 1;
-// 	}
-// }
 
 fn	sort_boxes(boxes: &mut [[u32; 2]])
 {
