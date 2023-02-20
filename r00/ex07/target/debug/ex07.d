@@ -1,0 +1,1 @@
+/mnt/c/Users/Pierr/Desktop/programmation/Piscine_rust/new_piscine/r00/ex07/target/debug/ex07: /mnt/c/Users/Pierr/Desktop/programmation/Piscine_rust/new_piscine/r00/ex07/src/lib.rs /mnt/c/Users/Pierr/Desktop/programmation/Piscine_rust/new_piscine/r00/ex07/src/main.rs
