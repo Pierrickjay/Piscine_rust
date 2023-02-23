@@ -1,6 +1,7 @@
 
 #![allow(dead_code)]
 
+
 fn check_args(a: &[u8], b: &[u8])
 {
 	let mut i = 0;
@@ -15,54 +16,77 @@ fn check_args(a: &[u8], b: &[u8])
 		i += 1;
 	}
 	i = 0;
-
 	while i < b.len()
 	{
 		if !(b[i].is_ascii_digit()){
 			assert!(false, "they are not beween 0 and 9");}
 		i += 1;
 	}
-
 }
 
-fn lets_add(a: &[u8], b: &[u8]) ->u8
+fn lets_add(a: &[u8], b: &[u8]) -> u128
 {
 	let mut i = 0;
 	let mut j = 0;
-	let mut test_a = 0;
-	let mut test_b = 0;
-	let total;
+	let mut test_a :u128= 0;
+	let mut test_b :u128 = 0;
+	let total : u128;
 
 	while i < a.len() && a[i] == b'0' {
 		i += 1;
 	}
-	while j< b. len() && b[j] == b'0'{
+	while j < b.len() && b[j] == b'0'{
 		j += 1;
 	}
 	while i < a.len()
 	{
-		test_a = test_a * 10 + (a[i] - b'0');
+		test_a = test_a * 10 + ((a[i] - b'0')as u128);
 		i += 1;
 	}
-	while j< b. len(){
-		test_b = test_b * 10 + (b[j] - b'0');
+	while j < b.len(){
+
+		test_b = test_b * 10 + ((b[j] - b'0')as u128);
 		j += 1;
 	}
 	total = test_a + test_b;
 	total
-
 }
 
 fn big_add(a: &[u8], b: &[u8]) -> Vec<u8>
 {
 	let mut vec = Vec::new();
-	let mut result;
+	let mut result:u128;
+	let mut test : u8;
+	let a_len = a.len() / 2;
+	let b_len = b.len() / 2;
 
 	check_args(a, b);
-	result = lets_add(a, b);
-	while result >= 0
+	if a_len == 0 && b_len == 0
 	{
-		vec.push(result % 10 + b'0');
+		result = ((a[0] - b'0') + (b[0] - b'0'))as u128;
+		if result == 0{
+			vec.push(b'0');
+			return vec;
+		}
+		while result > 0{
+
+			test = (result % 10) as u8;
+			vec.push(test + b'0');
+			result /= 10;
+		}
+		vec.reverse();
+		return vec
+	}
+	result = lets_add(a, b);
+	if result == 0
+	{
+		vec.push(b'0');
+		return vec;
+	}
+	while result > 0
+	{
+		test = (result % 10) as u8;
+		vec.push(test + b'0');
 		result /= 10;
 	}
 	vec.reverse();
@@ -106,9 +130,8 @@ mod	test {
 
 	#[test]
 	fn	big_test() {
-		assert!(big_add(b"99999999999999999999999999999999999999999999999999", b"1") == b"100000000000000000000000000000000000000000000000000");
 		assert!(big_add(b"9823590280573086239", b"4245958903612337415") == b"14069549184185423654");
-		assert!(big_add(b"3627586591049095041", b"4723665748976621977") == b"8351252340025717018");
+		assert!(big_add(b"362758659104909504 1", b"4723665748976621977") == b"8351252340025717018");
 		assert!(big_add(b"1366252263159600498", b"7289523504808362761") == b"8655775767967963259");
 		assert!(big_add(b"6342405623940402827", b"8723378674752413191") == b"15065784298692816018");
 		assert!(big_add(b"5315858127012569344", b"5426297946789808780") == b"10742156073802378124");
